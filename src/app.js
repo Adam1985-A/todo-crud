@@ -1,12 +1,15 @@
-import dotenv from "dotenv";
-dotenv.config();
+import dotenv from 'dotenv';
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
+import "reflect-metadata";
 import express from 'express';
 import AppDataSource from './database/data-source.js';
 import todoRoutes from './routes/todo.routes.js';
 import authRoutes from './routes/auth.route.js';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
